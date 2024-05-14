@@ -1,0 +1,392 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{indentfirst}
+\usepackage{tabularx}
+\usepackage{mathtools}
+\begin{document}
+\begin{titlepage}
+\scshape
+    \title{Universidade de São Pulo
+
+    Instituto de Física de São Carlos}
+    
+    \author{Mateus Alves Martins Claudino - 15478791\and Marco Antônio Bicalho de Oliveira - 15474741\and Luis Eduardo Aires Coimbra - 15472565\and Prof. Rafael Victorio Carvalho Guido}
+    \date{06 de Abril de 2024} 
+   
+    \begin{figure*}
+        \centering
+        \includegraphics{logo_ifsc.jpg}   
+    \end{figure*}
+    
+    
+    
+    
+    \maketitle
+\end{titlepage}
+\tableofcontents
+\newpage
+\section{Introdução}
+Na física, a elasticidade dos materiais é um tópico de grande importância, especialmente para áreas como a engenharia, que dependem dela para selecionar materiais adequados em aplicações industriais e civis, como na construção de vigas ou ferrovias.
+Esse conceito está relacionado à capacidade de um material de ser frágil ou dúctil, ou seja, à sua resistência e rigidez diante de situações de estresse e aplicação de forças externas. Isso permite determinar as condições nas quais ocorrem fraturas em estruturas, por exemplo. O módulo de elasticidade é a grandeza física que representa essa resistência, sendo mais especificamente descrito pelo módulo de Young quando se trata de forças aplicadas que geram deformação na mesma direção.
+
+Por definição, o módulo de Young é a razão entre a tensão aplicada ($\sigma$) e ($\epsilon$), que é a razão entre deformação e comprimento inicial.
+
+\begin{equation}
+    E = \frac{\sigma}{\epsilon}
+\end{equation}
+Sendo $F$ uma força de tração aplicada produzindo um alongamento $x$ e $l$ o comprimento da barra medida.No limite elástico, devido ao fato de $E$ ser uma constante, a relação entre $x$ e $F$ é linear. Assim:
+\begin{equation}
+    E = {\frac{\frac{F}{A}}{\frac{x}{l}}}
+\end{equation}
+ 
+\begin{equation}
+    F= \frac{EA}{l}x
+\end{equation}
+
+Além do módulo de Young, existem outras constantes para representar a elasticidade em ocasiões particulares, como o módulo de compressão usado para analisar a resistência a tensões perpendiculares no sentido do corpo e o módulo de cisalhamento para a resistência em relação a tensões tangenciais.     
+
+    \begin{figure}[!h]
+        \centering
+        \caption{Valores de referênica de elasticidade retirados do livro de laboratório do     IFSC-USP}
+        \includegraphics[width=1\linewidth]{tabela de valores de young.png}
+  
+    \end{figure}
+
+\subsection{Deflexão}
+
+Dentre as diversas deformações que um corpo pode estar sujeito, é particularmente importante o caso da "deflexão", sendo essa uma mudança na angulação de um determinado objeto, por exemplo de uma barra metálica. Uma força $F$ que seja aplicada em uma extremidade, mantendo a outra fixa, a deflexão $x$ dessa barra é dada por:
+\begin{equation}
+    F = \left(E\frac{d^3b}{4L^3}\right)x
+\end{equation}
+Nessa equação $E$ representa o módulo de Young do material, descrito na equação (1), $L$ o comprimento, $d$ a espessura e $b$ a largura do objeto. 
+A equação (4) pode ser reescrita como:
+\begin{equation}
+    F = kx
+\end{equation}
+A equação (5), foi postulada pelo físico britânico Robert Hooke e denominada lei de Hooke, que tem como objetivo exatamente descrever a relação entre a força e a deflexão de um corpo, que pode então ser definida por uma proporção e representada com um gráfico de reta. 
+
+\subsection{Regime de materiais} 
+
+Quando se analisa a deformação experimentada por um corpo, torna-se crucial compreender os regimes nos quais o objeto pode estar inserido: elástico ou plástico.
+No regime plástico, o material excede seu limite de ruptura, o ponto em que aplicações adicionais de força se tornam irreversíveis, resultando em uma deformação permanente, incapaz de retornar ao estado inicial.
+No regime elástico, a deformação é reversível. Após a aplicação da força, o corpo retorna à sua posição original. Contudo, dentro desse regime, há duas regiões distintas: uma que mantém uma relação proporcional entre deformação e força, e outra que não segue essa proporção, conforme descrito pela lei de Hooke, equação (5). Para forças de magnitude reduzida, que geram no máximo 1\% de deformação, observa-se uma relação linear entre deformação e força, conforme expresso pela equação (3).
+
+\subsection{Gráficos}
+
+Para correlacionar e visualizar dados, a forma de demonstração mais adequada é por meio de gráficos, pois facilita o entendimento da relação entre duas grandezas físicas, sendo fundamental para a análise de experimentos.
+Além disso, na física, certas grandezas podem apresentar relações bastante diversas, podendo ser expressas por polinômios de qualquer ordem ou outras formas matemáticas. Portanto, é importante utilizar a técnica de linearização para representar gráficos de maneira eficaz. Essa técnica consiste em ajustar a escala dos eixos de modo que a relação entre as duas grandezas se torne linear, ou seja, representada por uma reta da forma $y=ax+b$. Isso permite uma visualização mais clara dos dados e facilita o cálculo da relação entre as grandezas $y$ e $x$ por meio do coeficiente angular, que pode ser obtido escolhendo-se dois pontos do gráfico:
+\begin{equation}
+a = \frac{y_2 - y_1}{x_2 - x_1}
+\end{equation}
+
+\section{Objetivos}
+
+ O principal objetivo desse relatório é medir o módulo de Young de uma régua de aço e comparar se a medição feita através do experimento é equivalente ao módulo de Young tabelado do aço de acordo com a tabela 1. Ao realizar tal medição uma das metas é obter melhor compreensão das propriedades mecânicas de materiais, incluindo sua capacidade de deformação elástica e resposta ao estresse aplicado. Além disso, fazer linearização de gráficos conforme descrito em [1.3] e (6) e esquematizá-los em escalas milimetrada e log-log estão entre os objetivos do experimento. 
+
+\section{Materiais} 
+
+\begin{enumerate}
+    \item Paquímetro. Modelo: Digimess
+    \item Micrômetro. Modelo: Outside Micrometer
+    \item Balança analítica. Modelo: AUW220D (Shimadzu)
+    \item Massas com suporte variável 
+    \item Régua plana de aço
+    \item Suporte para aferir deformação
+    \item Régua deslizante
+\end{enumerate}
+
+\section{Métodos experimentais}
+Nessa pesquisa dois experimentos foram realizados: ao fixar uma das extremidades do corpo num suporte e na outra extremidade utilizar um gancho para apoio de diferentes pesos medidos; após isso, mantendo o peso na extremidade constante e variando o comprimento da régua. Assim, obtém-se duas maneiras indiretas de se calcular o módulo de Young de uma régua metálica.
+
+\subsection{Experimento 1}
+Inicialmente, a haste de apoio aos pesos teve sua massa aferida, depois foi medida a massa adicionando cada peso um a um, por fim foram calculadas as forças peso de cada medição usando
+\begin{equation}
+    \vec P = m \vec g \hspace{2cm} |\vec g| = 9,81 \frac{m}{s^2}
+\end{equation}
+
+Paralelamente, por meio do uso de um paquímetro, obteve-se o valor da largura da régua de aço $b$, e com o auxílio de um micrômetro, foi realizada a medição da espessura $d$. Todas essas medidas foram feitas com um comprimento fixado previamente em $L$.
+
+Após a aferição dos pesos e a verificação das dimensões da régua, os pesquisa-dores independentes colocaram os pesos um a um na extremidade livre da régua de aço, apoiados em um "gancho". Em seguida, a deformação $x$ causada na régua foi aferida, analisando-se o deslocamento da régua deslizante, que inicialmente media 6cm em sua posição inicial.
+
+Os dados obtidos foram então tabulados e posteriormente plotados em um gráfico, a fim de analisar a relação linear entre a força aplicada e a deformação do objeto. Utilizando a equação (6), o coeficiente angular $k$ da reta dada pela equação (5) foi calculado da seguinte maneira:
+
+\begin{equation}
+k = \frac{F_2 - F_1}{x_2 - x_1}
+\end{equation}
+
+Reorganizando a equação (4) e considerando $k$ como o fator constante dessa relação, obtém-se o módulo de Young $E$:
+
+\begin{equation}
+E = \frac{4kL^3}{d^3b}
+\end{equation}
+Por fim, comparando o módulo de Young obtido com o valor tabelado para o aço encontrado na tabela 1.
+
+\subsection{Experimento 2}
+Já no segundo experimento, foi escolhido o peso máximo $3,5913429 N$ mantido constante para deformar a régua, porém, diminuindo o comprimento da régua de aço de $2cm$, entre cada medição, com o auxílio do suporte no qual a régua estava fixa, sempre atualizando a referência da régua deslizante, visto que com a diminuição do comprimento, o peso da própria régua vai diminuindo sua deformação natural, elevando a régua deslizante e com isso diminuindo o valor de referência. Após aferidas as medições foi feita uma tabela relacionando os valores dos comprimentos $L$, das deformações $x$ e do comprimento ao cubo $L^3$.
+Reescrevendo a equação (4) e isolando $x$:
+\begin{equation}
+    x = \frac{4L^3F}{Ed^3b}
+\end{equation}
+Assim, visando plotar um gráfico de $x \times L$, a equação foi linearizada utilizando logaritmo da seguinte forma:
+\begin{equation}
+    \log x = \log {\left(\frac{4F}{Ed^3b}\right)} + 3\log L 
+\end{equation}
+Portanto, um gráfico na escala logarítmica foi traçado utilizando-se os dados obtidos, e calculou-se o seu coeficiente angular $m$ para relacionar $x$ e $L$:
+\begin{equation}
+    m = \frac{\log x_2 - \log x_1}{\log L_2 - \log L_1}
+\end{equation}
+Comparando com a equação (11), o $m$ da reta traçada deve ser próximo de 3.
+Em seguida, foi feito um gráfico de $x \times L^3$, que deve obedecer a equação de uma reta como estabelecido pela equação (10), e obteve-se o coeficiente angular $c$ da seguinte maneira:
+\begin{equation}
+    c = \frac{x_2 - x_1}{L^3_2 - L^3_1}
+\end{equation}
+Logo, foi possível calcular, agora com a força constante, o módulo de Young $E$ rearranjando a equação (10):
+\begin{equation}
+    E = \frac{4F}{cd^3b}
+\end{equation}
+Finalmente, foi feita uma comparação do valor calculado para $E$ com o módulo de Young do aço tabelado, encontrado na tabela 1.
+
+\section{Resultados}
+\subsection{Resultados do experimento 1}
+Após aferição dos dados das massas, como explicado em [4.1], foi feita a tabela:
+\begin{table}[!h]
+    \centering
+    \caption{Valores aferidos de massas e pesos}
+    \begin{tabular}{| c | c | c |}
+   \hline
+     Código & Massa (g)($\pm 0,01$ g) & Peso (N)($\pm 0,0001$ N)       \\
+   \hline  
+       A1   &   57,20   &   0,5611     \\
+   \hline    
+       K3   &   108,00  &   1,0595      \\
+   \hline    
+       P5   &   154,72  &   1,5178      \\
+   \hline    
+       H4   &   188,81  &   1,8522    \\
+   \hline    
+       P8   &   227,34  &   2,2302    \\
+   \hline    
+       G2   &   270,56  &   2,6542   \\
+   \hline    
+       S3   &   321,52  &   3,1541    \\
+   \hline   
+       J6   &   366,09  &   3,5913   \\ 
+   \hline
+\end{tabular} 
+    \label{tab:1}
+\end{table}
+
+Também, como exposto em [4.1], as seguintes deformações foram medidas:
+
+\begin{table}[!h]
+    \centering
+    \caption{Medição da deformação da régua de aço}
+    \begin{tabular}{| c | c | c |}
+    \hline
+        Força (N)($\pm 0,0001$ N) & $x$ (cm)($\pm 0,1$ cm)\\
+    \hline  
+             0,5611   &   0,9    \\
+   \hline    
+             1,0595   &   1,7    \\
+   \hline    
+             1,5178    &   2,4    \\
+   \hline    
+              1,8522     &   3,0    \\
+   \hline    
+              2,2302   &   3,5    \\
+   \hline    
+              2,6542  &   4,2    \\
+   \hline    
+              3,1541  &   4,9    \\
+   \hline   
+              3,5913  &   5,5    \\ 
+   \hline
+    \end{tabular}
+    \label{tab:2}
+\end{table}
+
+Após medição das dimensões da régua, foram obtidos os seguintes valores para comprimento, largura e espessura, respectivamente:
+\begin{equation}
+    L = 0,270 \pm 0,001 m    
+\end{equation}
+\begin{equation}
+    b = 0,0233 \pm 0,0005 m
+\end{equation}
+\begin{equation}
+    d = 0,00101 \pm 0,00001 m
+\end{equation}
+
+Foi traçado um gráfico de $F \times x$, em que a força $F$, em newtons, aplicada na régua aparece no eixo $y$ e a deformação $x$, em centímetros, da régua no eixo $x$: 
+
+\begin{figure}[!h]
+    \centering
+    \caption{Gráfico 1: gráfico em escala milimetrada de força contra deformação}
+    \includegraphics[scale=0.1]{graficos/F_contra_x-milimetrado.jpg}
+    \label{fig:fcontrax}
+\end{figure}
+
+Convertendo os valores de $x$ da tabela 3 de centímetro para metro e usando a equação (8), tomando o primeiro e o penúltimo ponto produzidos pela tabela 3, obtém-se:
+\begin{equation}
+    k = \frac{3,1541112 - 0,561132}{0,049 - 0,009} = 64,82448 \frac{N}{m}
+\end{equation}
+Propagando o erro de $k$ :
+\begin{equation}
+    \Delta k
+\end{equation}
+\begin{equation}
+    k truncado
+\end{equation}
+Após isso, foi calculado o valor de $E$ usando a equação (9):
+\begin{equation}
+    E = \frac{4\cdot 64,82448 \cdot (0,27)^3}{(0,00101)^3\cdot 0,0233} = 212,603437 GPa
+\end{equation}
+Propagando o erro de $E$: 
+\begin{equation}
+    \Delta E
+\end{equation}
+\begin{equation}
+    E truncado
+\end{equation}
+
+Por fim, foi realizado o cálculo da equivalência entre o módulo de Young encontrado na equação (19) com o módulo de Young do aço na tabela 1:
+\begin{equation}
+    |E - E_{aco}| < 2\cdot |\Delta E + \Delta E_{aco}|
+\end{equation}
+\[
+    |210 - 200| < 2\cdot|20 + \Delta E_{aco}| \Rightarrow
+    10 < 2\cdot|20 + \Delta E_{aco}|
+\]
+O que conclui que o valor encontrado no experimento para o módulo de Young da régua de aço é equivalente ao valor tabelado para o aço.
+\subsection{Resultados do experimento 2}
+Após a medição e realização do experimento foi feita a seguinte tabela, como explicitado em [4.2]:
+\begin{table}[!h]
+    \centering
+    \caption{Relação entre comprimento, deformação e comprimento ao cubo da régua de aço}
+    \begin{tabular}{| c | c | c |}
+    \hline
+        $L$(cm)($\pm 0,1$ cm) & $x$(cm)($\pm 0,2$ cm) & $L^3$($10^{3}$cm³)\\
+         \hline
+         27,0 & 5,5 & 19,7 $\pm$ 0,2\\
+         \hline
+         25,0 & 5,0 & 15,6 $\pm$ 0,2\\
+         \hline
+         23,0 & 3,8 & 12,2 $\pm$ 0,2\\
+         \hline
+         21,0 & 2,8 & 9,3 $\pm$ 0,1\\
+         \hline
+         19,0 & 2,1 & 6,9 $\pm$ 0,1\\
+         \hline
+         17,0 & 1,6 & 4,9 $\pm$ 0,1\\
+         \hline
+         15,0 & 1,2 & 3,4 $\pm$ 0,1\\
+         \hline
+         13,0 & 0,7 & 2,2 $\pm$ 0,1\\
+         \hline
+    \end{tabular}
+    \label{tab:tab3}
+\end{table}
+
+Com os dados da tabela 4, foi traçado o seguinte gráfico na escala log-log para visualizar a relação entre $x$ e $L$: \\
+
+\begin{figure}[!h]
+    \centering
+    \caption{Gráfico 2: relação entre deformação e comprimento da régua em escala log-log}
+    \includegraphics[scale = 0.08]{graficos/x_contra_L-loglog.jpg}
+    \label{fig:enter-label}
+\end{figure}
+Tomando os pontos (13;0,7) e (19;2,1) do gráfico 2 e utilizando a equação (12), foi calculado o coeficiente angular da reta:
+\begin{equation}
+    m = \frac{\log 2,1 - \log 0,7}{\log 19 - \log 13} = 2,894973
+\end{equation}
+Propagando o erro do coeficiente: 
+\begin{equation}
+    \Delta m
+\end{equation}
+\begin{equation}
+    m truncado
+\end{equation}
+Como citado em [4.2], comparou-se o coeficiente encontrado com o valor referência $m = 3$, sendo feita a seguinte equivalência:
+\begin{equation}
+    |2,9 - 3| < 2\cdot|0,6 + 0| \Rightarrow 0,1 < 1,2
+\end{equation}
+Portanto, a reta é equivalente ao resultado previsto previamente.
+Em seguida, foi plotado um gráfico de $x$ contra $L^3$, visto que de acordo com a equação (10), a relação entre as duas grandezas, em escala milimetrada, é uma reta:
+\begin{figure}[!h]
+    \centering
+    \caption{Gráfico 3: relação entre deformação e comprimento ao cubo em escala milimetrada}
+    \includegraphics[scale = 0.1]{graficos/x_contra_Lcubo-milimetrado.jpg}
+    \label{fig:enter-label}
+\end{figure}
+Calculando o coeficiente angular de tal reta com base nos pontos (2,197;0,7) e (12,167;3,8) com base na equação (13):
+\begin{equation}
+    c = \frac{3,8 - 0,7}{12,167 - 2,197} = 0,3109\cdot 10^{-3} cm^{-2}
+\end{equation}
+\[
+    c = 3,109 m^{-2}
+\]
+Usando a equação (14), foi calculado o módulo de Young com o comprimento variando:
+\begin{equation}
+    E = \frac{4\cdot 3,5913}{3,109\cdot 0,0233\cdot 0,00101^{3}} = 192,473486 GPa
+\end{equation}
+Propagando o erro do E: 
+\begin{equation}
+    \Delta E
+\end{equation}
+\begin{equation}
+    E truncado
+\end{equation}
+Após calcular o módulo de Young, foi feita a equivalência, usando a equação (24) entre o $E$ calculado no experimento 2 com o módulo de Young do aço na tabela 1:
+\[
+    |190 - 200| < 2\cdot |6 + \Delta E_{aco}| \Rightarrow 10 < 2\cdot|6 + \Delta E_{aco}|
+\]
+Logo, o módulo de Young encontrado pelo outro procedimento é também equivalente ao módulo de Young do aço.
+    
+\subsection{Discussão}
+Para estimar qual dos dois experimentos resulta num melhor valor para o módulo de Young do aço, foi feito um cálculo de desvio de cada valor encontrado em comparação com o valor esperado dado pela tabela 1 utilizando a fórmula seguinte:
+\begin{equation}
+    \sigma_{erro} = \frac{|Valor_{calculado} - Valor_{esperado}|}{Valor_{esperado}}
+\end{equation}
+Para o primeiro experimento:
+\[
+    \sigma_{1} = \frac{|212,603437 - 200,000000|}{200,000000} = 6,301\cdot 10^{-2}
+\]
+Para o segundo experimento:
+\[
+    \sigma_{2} = \frac{|192,473486 - 200,000000|}{200,000000} = 3,763\cdot 10^{-2}
+\]
+Portanto, o módulo de Young calculado no segundo experimento é mais adequado, pois seu desvio em relação ao valor esperado é inferior ao do primeiro($\sigma_2 < \sigma_1$), além de que sua incerteza também é inferior a do módulo de Young do experimento 1.
+
+\section{Conclusão}
+Após realizar a análise de duas abordagens distintas para determinar o módulo de Young de uma barra, foi possível avaliar as propriedades mecânicas através da observação das deformações provocadas tanto pela variação de peso, no caso do primeiro experimento, quanto pela variação de comprimento, no segundo experimento. Foi evidente que a linearização dos dados por meio da transformação logarítmica facilitou a análise e proporcionou uma estimativa mais precisa do módulo de Young.
+
+Conclui-se que o segundo experimento se revelou mais eficaz em comparação ao primeiro. Isso se deve ao fato de que, com a redução do comprimento, o peso da própria régua exerce menor influência nos cálculos do módulo de Young, minimizando assim possíveis erros sistemáticos, corrigidos com o ajuste da referência na régua deslizante, que, no contexto do primeiro experimento, permanece constante, aumentando a incerteza dos resultados obtidos.
+
+\section{Apêndice}
+\subsection{Incertezas do experimento 1}
+Em anexo
+\subsection{Incertezas do experimento 2}
+Em anexo
+\section{Referências e Bibliografias}
+
+ Livro de práticas do IFSC-USP
+
+ Paul. A Tipler .Volume 1- 6$^a $ edição
+    
+ fib Model Code 2010
+ 
+ Eurocode 2004
+ 
+ ASTM
+ 
+ C469/C469M-14
+ 
+ ASTM C597-09
+ 
+ ASTM E1876-09
+ 
+ ACI 318-14
+
+ ABNT NBR 7195 
+
+
+\end{document}
