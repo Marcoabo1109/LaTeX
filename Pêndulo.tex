@@ -1,0 +1,509 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{pgfplots}
+\usepackage{ulem}
+\usepackage{circuitikz}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{gensymb}
+\usepackage{emoji}
+\pgfplotsset{width=10cm, compat=1.18}
+\geometry{
+	paper=a4paper, 
+	inner=3cm,
+	outer=3cm,
+	bindingoffset=.5cm, 
+	top=2cm, 
+	bottom=2cm, 
+}
+
+
+\graphicspath{ {./imagens/} }
+\newcommand{\source}[1]{\caption*{Fonte: {#1}} }
+
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        \Large
+       
+        \vspace*{1cm}
+
+        \includegraphics[scale=0.75]{imagens/ifsc_logo.png} \\
+        \Huge
+        \textbf{Universidade de São Paulo} \\
+        \huge
+        Movimento Unidimensional
+        
+        \Large
+        Laboratório de física I
+
+        \vspace{4cm}
+        \Large
+        
+    \end{center}
+   
+    \begin{flushright}
+        \Large
+        \textbf{Alunos}\\
+        \large
+            Luis Eduardo Aires Coimbra - n° 15472565\\
+            Marco Antônio Bicalho de Oliveria - n° 15474741\\
+            Mateus Alves Martins Claudino - n° 15478791
+            
+    \end{flushright}
+
+    \begin{flushright}
+        \Large
+        \textbf{Professor}\\
+       Rafael Victorio Carvalho Guido
+        \large
+            
+            
+    \end{flushright}
+    
+    \vspace*{\fill}
+    \centering \large São Carlos \\ 2024
+    
+\end{titlepage}
+ \tableofcontents
+ \newpage
+
+\section{Introdução}
+Um dos objetivos da física é estudar o movimento dos objetos: a rapidez com
+que se movem, por exemplo, ou a distância que percorrem em um dado intervalo de
+tempo. Dessa forma, pode-se especificar o movimento em uma única dimensão,o movimento nos casos em que o objeto está se movendo em linha reta. Este
+tipo de movimento é chamado de movimento unidimensional[8].
+
+De forma geral, se esse movimento for uniformimente variado ele pode ser descrito pela equação (1) [10]:
+\begin{equation}
+ x(t) = x_{0} + v_{0}t + \frac{at^2}{2}
+\end{equation}
+Com $x(t)$ representando a posição final do objeto em um instante genérico $t$, $x_{0}$ a posição inicial em $t = 0$, $v_{0}$ a velocidade inicial em $t = 0$, $a$ a aceleração, e $t$ o instante de tempo analisado, com $t \geq 0$.
+
+    \subsection{Pêndulo}
+        O pêndulo simples consiste em um fio de comprimento $L$ que possui uma de suas extremidades fixa e a outra presa a um corpo de massa $m$. No estudo do seu movimento, abandona-se o pêndulo de um ângulo inicial $\phi_{0}$ em relação à vertical, quando está sujeito a um campo gravitacional de aceleração $\vec g$, o que causa um movimento oscilatório descrito por um arco de circunferência e de período $T$. Para $\phi_{0}$ suficientemente pequeno, o movimento do pêndulo simples pode ser aproximado a um movimento harmônico simples (MHS) [10]. 
+        
+        Assim, ao se deduzir as equações de seu movimento com base em um MHS, obtém-se a equação (2) para o cálculo do seu período de oscilação.
+        \begin{equation}
+            T = 2\pi \sqrt{\frac{L}{g}}
+        \end{equation}
+        A equação (2) foi inicialmente descrita por Galileu Galilei, ao estudar a periodicidade de pêndulos simples, assim, para valores fixos de $L$, ao medir o período $T$ é possível estudar a aceleração da gravidade $\vec g$ no local do experimento.
+        
+    \subsection{Plano inclinado}
+       Por plano inclinado, refere-se a um plano fixo que forma um ângulo $\theta$ com a horizontal, com uma massa deslizando sobre ele sem atrito. Existem duas forças atuando: o peso e a reação do plano. Como essas forças não se cancelam, existe uma força resultante e, portanto, aceleração.      
+       O movimento pode ser descrito como unidimensional, escolhendo um referencial que meça a coordenada na direção paralela ao plano inclinado. Definindo o instante t = 0, como aquele cujo objeto está na posição $y = 0$, com velocidade $v_0$, a equação horária (3) resulta em [9]:
+       \begin{equation}
+          y(t) = v_{0}t + \frac{a}{2}t^2
+       \end{equation}
+       Sendo $a$ a aceleração dada pela equação (4) :
+       \begin{equation}
+          a = g\sin{\theta}
+       \end{equation}
+       
+    \subsection{Regressão linear}
+ O Método dos Mínimos Quadrados (MMQ), ou Mínimos Quadrados Ordinários (MQO) ou OLS (do inglês Ordinary Least Squares) é uma técnica de otimização matemática que procura encontrar o melhor ajuste para um conjunto de dados tentando minimizar a soma dos quadrados das diferenças entre o valor estimado e os dados observados (tais diferenças são chamadas resíduos) [9].
+
+Esse é o método analítico geral para encontrar a melhor reta
+que represente o conjunto de N pares de dados experimentais
+ yixi , com i = 1, ...N, independente de critérios do observador. A
+ideia fundamental é definir a melhor reta como aquela que minimiza
+as distâncias verticais em relação aos dados experimentais. O
+método de mínimos quadrados, ou regressão linear, considera a
+soma dos quadrados das distâncias (5)[9]:
+
+\begin{equation}
+    S= \sum_{i=1}^{N}(y_{Ci}-y_{i})^{2}
+\end{equation}
+
+em que $y_{Ci}$ é o valor calculado para o dado i-ésimo com a equação
+da melhor reta $y_{Ci}= ax+b$ . O processo de minimização de S
+,como função dos parâmetros da reta, fornece as seguintes
+expressões (6)(7)(8)(9)(10):
+
+\begin{equation}
+    a= \frac{\sum(x_{i}-\bar x)y_{i} }{\sum(x_{i}-\bar x)^2}
+\end{equation}
+
+\begin{equation}
+    b = \bar y - a \bar x
+\end{equation}
+
+\begin{equation}
+    \Delta y = \sqrt{\frac{\sum(ax_{i} +b - y_{i})^2 }{N-2}}
+\end{equation}
+
+\begin{equation}
+    \Delta a = \frac{\Delta y}{\sqrt{\sum(x_{i}-\bar x)^2}}
+\end{equation}
+
+\begin{equation}
+    \Delta b = \sqrt{\frac{\sum x_{i}^2 }{N\sum(x_{i}-\bar x)^2}}\Delta y
+\end{equation}
+
+    Sendo $a$ o coeficiente angular da reta, $b$ o coeficiente linear, $\Delta y$ o erro de $y$, $\Delta a$ o erro de $a$ e $\Delta b$ o erro de $b$.
+
+\section{Objetivos}
+Este estudo visou aprofundar a compreensão do movimento unidimensional através de experimentos que exploram a determinação da gravidade usando o pêndulo simples e o plano inclinado. Além disso, buscou-se familiarizar os estudantes com o conceito de linearização de funções pelo método dos mínimos quadrados. Os objetivos específicos incluiram proporcionar uma compreensão sólida do movimento unidimensional, permitindo aos estudantes calcular experimentalmente a aceleração devida à gravidade, bem como introduzi-los à técnica de linearização de dados, promovendo, assim, o desenvolvimento de habilidades práticas e conceituais em física.
+
+
+
+\section{Materiais}
+    \begin{enumerate} 
+        \item Massa com suporte fixo 
+        \item Régua plana de plástico
+        \item Cronômetro Casio-hs-6-10-MRKEAN
+        \item Trena métrica - Starrett
+        \item Trilho de ar
+        \item Fita de papel termosensível
+        \item Eletroimã
+        \item Carrinho
+        \item Agulha
+        \item Barbante
+    \end{enumerate}
+\section{Metodologia}
+    \subsection{Experimento do pêndulo}
+    Nesse experimento o grupo utilizou-se de um pêndulo para determinar a aceleração da gravidade local a partir da medição do seu período.
+
+    
+   Na execução do procedimento, primeiramente, mediu-se o comprimento do barbante com uma trena, seguido pela cronometragem de dez períodos de oscilação do pêndulo, com o objetivo de minimizar o erro de medição para apenas um ou dois períodos. Os resultados obtidos foram então registrados na tabela 1. Então, calculou-se o período de uma só oscilação dividindo o tempo encontrado por dez, e em seguida elevou-se esse período ao quadrado, com os resultados subsequentemente inseridos na tabela 1. Esse processo foi repetido por um total de sete vezes.
+
+    
+    Para a análise da relação do período de oscilação $T$ do pêndulo com o comprimento $L$ do barbante a que ele está preso, foi feita a linearização da equação (2), obtendo o seguinte resultado (11):
+    \begin{equation}
+    T^2 = \frac{(2\pi)^2}{g}L 
+    \end{equation}
+    Ou ainda (12) :
+    \begin{equation}
+    T^2 = kL
+    \end{equation}
+    Sendo k o coeficiente angular da reta de melhor ajuste de $T^2$ por $L$.
+
+    
+   A partir dos dados da tabela, foi elaborado um gráfico milimetrado de $T^2 \times L$. Utilizando-se o método dos mínimos quadrados (MMQ), foi determinada a inclinação da reta, denotada por $k$, junto de sua incerteza, calculada pelas equações (8) e (9). Posteriormente, igualou-se o valor de $k$ ao fator $\frac{(2\pi)^2}{g}$, resultando na obtenção da aceleração da gravidade, conforme evidenciado na equação (13):
+    \begin{equation}
+     g = \frac{(2\pi)^2}{k}
+    \end{equation}
+    E também sua incerteza (14) :
+    \begin{equation}
+    \Delta g = \frac{(2\pi)^2\Delta k}{k^2}
+    \end{equation}
+    \subsection{Experimento do plano inclinado}
+    Para o experimento 2, foi utilizado o conceito do plano inclinado. Apoiou-se um objeto num trilho de ar, para diminuir a influência do atrito, e após isso inclinando-o de um ângulo $\theta$ com a ajuda de um calço de madeira. 
+    
+    O ângulo foi encontrado através do seguinte triângulo retângulo formado pelo plano inclinado:
+    (desenho do triangulo retangulo).
+
+    
+    a altura desse triangulo foi medida com um paquímetro e a hipotenusa com uma trena. Assim, obteve-se o ângulo $\theta$ pela equação (15):
+    \begin{equation}
+        \theta = \arcsin{\frac{D}{H}}
+    \end{equation}
+    
+    Com o auxílio de um eletroímã, um oscilador de frequência $f$, e uma fita termossensível, foi marcada a posição do objeto no plano inclinado a cada intervalo de tempo $\Delta t$ constante dado pela equação (16): 
+    \begin{equation}
+        \Delta t = \frac{1}{f}
+    \end{equation}
+    Em seguida, foi medida a posição $y$ de cada ponto marcado na fita termossensível. Após isso, os dados foram colocados na tabela (2) para melhor análise.
+
+    Rearranjando a equação (3), foi obtida a equação (17):
+    \begin{equation}
+        \frac{y(t)}{t} = v_{0} + \frac{at}{2}
+    \end{equation}
+    Assim, foi plotado um gráfico em escala milimetrada de $\frac{y}{t} \times t$, que aproxima-se de uma reta com coeficiente angular dado por $\frac{a}{2}$, sendo $a$ descrito pela equação (4) e o coeficiente angular calculado pelo método dos mínimos quadrados.
+\newpage
+\section{Resultados}
+    \subsection{Resultados do experimento do pêndulo}
+    Após aferir os períodos $T$ em função dos comprimentos $L$ foi obtida a seguite tabela:
+
+    
+    \begin{table}[!h]
+    \centering
+    \caption{Comprimento do pêndulo $L$, tempo de N oscilações $t_{N}$, período de
+oscilação $T$ e valores de $T^2$ para linearização dos dados}
+     \begin{tabular}{| c | c | c | c |}
+   \hline
+     $L$(m)($\pm 0,001$ m)  & $t_{10}$(s)($\pm 0,2$ s) &  $T$(s)($\pm 0,02$ s) & $T^2$($s^2$)   \\
+    \hline
+       2,362   &   30,6   &   3,06 & 9,3 ($\pm 0,1$)     \\
+   \hline    
+       2,100   &   28,8  &   2,88  & 8,3 ($\pm 0,1$)    \\
+   \hline    
+       1,810   &   27,0  &   2,70  & 7,3 ($\pm 0,1$)   \\
+   \hline    
+       1,532   &   24,8  &   2,48  & 6,1 ($\pm 0,1$) \\
+   \hline    
+       1,260   &   22,6  &   2,26  & 5,09 ($\pm 0,09$) \\
+   \hline    
+        0,940   &   19,3  &   1,93  & 3,73 ($\pm 0,08$) \\
+   \hline    
+        0,652    &  16,1  &   1,61  & 2,59 ($\pm 0,06$) \\
+   \hline
+\end{tabular} 
+    \label{tab:1}
+    \end{table}
+
+    
+ Em seguida,foi desenhado o gráfico, que, conforme o indicado pela equação (11), possui uma relação linear:
+
+
+\begin{figure}[!h]
+    \centering
+    \caption{Gráfico em escala milimetrada de $T^2 \times L$}
+        \begin{tikzpicture} 
+        
+        \begin{axis}[    
+        xlabel=L(m),            
+        ylabel= $T^2(s^2)$]
+        
+        \addplot[only marks, mark=*] coordinates {
+            (2.362 , 9.3)
+            (2.100 , 8.3)
+            (1.810 , 7.3)
+            (1.532 , 6.1)
+            (1.260 , 5.09)
+            (0.940 , 3.73)
+            (0.652 , 2.59)
+        };
+        
+        \addplot[domain=0:2.5] {3.94886*x};
+        
+        \end{axis}
+        \end{tikzpicture}
+    \label{Elaborado pelos autores}
+\end{figure}
+
+
+
+Posteriomente, utilizou-se do método dos mínimos múltiplos quadrados (MMQ), explicitado na equação (6), para obter o coeficiente angular da reta, denotado por k (18):
+\begin{equation}
+ k = 3,94886 \hspace{0.1cm} s^2/m
+ \end{equation}
+ E também sua incerteza, por meio das equações (8)  e (9), com o seguinte resultado (19):
+ \begin{equation}
+ \Delta k = 0,037389256  \hspace{0.1cm} s^2/m 
+ \end{equation}
+ De tal modo que esse coeficiente pode ser representado por (20) :
+ \begin{equation}
+    k = (3,95 \pm 0,04) \hspace{0.1cm} s^2/m 
+ \end{equation}
+ A partir disso foi possível substituir $k$ na equação (13) para obter a  aceleração da gravidade (21) :
+ \begin{equation}
+    g = 9,99741\hspace{0.1cm} m/s^2
+ \end{equation}
+ Além disso foi calculada sua incerteza, substituindo os resultados das equações (19) e (20) na equação (14), para obter o resultado representado na equação (22) :
+\begin{equation}
+  \Delta g = 0,094659093 \hspace{0.1cm} m/s^2
+\end{equation}
+De tal modo que é possível representar esse resultado pela equação (23) :
+    \begin{equation}
+    g = (10,00 \pm 0,09) \hspace{0.1cm} m/s^2
+    \end{equation}
+    Por último, foi feito um cálculo da equivalência entre o valor de
+$g$ encontrado e o tabelado, de tal modo que obteve-se (24) :
+    \begin{equation}
+     |9,99741 - 9,81| < 2|0,094465093|\hspace{1.5cm}    0,18741 < 0,188930186
+    \end{equation}
+    De fato, são equivalentes.
+    \subsection{Resultados do experimento do plano inclinado}
+    Inicialmente, foram aferidos os valores de $H$ e $D$ mostrados na equação (15), dados pelas equações (25), (26):
+    \begin{equation}
+        H = 1,600 \pm 0,001 m
+    \end{equation}
+    \begin{equation}
+        D = 0,06100 \pm 0,00005 m
+    \end{equation}
+    Em seguida, foi calculado o valor de $\theta$ através da equação (15), dado pela equação (27):
+    \begin{equation}
+        \theta = 2,184931117 \degree \Rightarrow \sin{\theta} = 0,038124999
+    \end{equation}
+    Paralelamente, foi utilizada a equação (15) como base para calcular a incerteza do $\sin{\theta}$, assim foi gerada a equação (28):
+    \begin{equation}
+        \Delta \sin{\theta} = 0,000055078125
+    \end{equation}
+    Após truncamento e arredondamento, foi obtida a equação (29):
+    \begin{equation}
+        \sin{\theta} = 0,03812 \pm 0,00006
+    \end{equation}
+    Após isso, com a frequência $f = 5Hz$ do oscilador, usando a equação (16) foi obtida a equação (30) o intervalo de tempo entre cada marcação de posição na fita termossensível:
+    \begin{equation}
+        \Delta t = 0,2 s
+    \end{equation}
+     Então, com os valores  da posição $y$ em função do tempo, foi feita a seguinte tabela:
+
+     
+    \begin{table}[!h]
+        \centering
+        \caption{relação entre tempo $t$ após o início do movimento e a posição $y$ do carrinho paralela ao plano inclinado}
+         \begin{tabular}{| c | c | c | c |}
+           \hline
+             $t$(s)  & $y$(m)($\pm 0,001$ m) &  $\frac{y}{t}$(m/s)($\pm 0,001$ m/s)\\
+            \hline
+               0,4   &   0,0290   &   0,073   \\
+           \hline    
+               0,6   &   0,064   &   0,107   \\
+           \hline    
+               0,8   &   0,115  &   0,144   \\
+           \hline    
+               1,0   &   0,182  &   0,182   \\
+           \hline    
+               1,2   &   0,263  &   0,219 \\
+           \hline    
+               1,4   &   0,359  &   0,256   \\
+           \hline    
+               1,6    &  0,471  &   0,294  \\
+           \hline
+               1,8    &  0,598  &   0,332  \\
+           \hline
+        \end{tabular} 
+        \label{tab:2}
+    \end{table}
+
+Em seguida, foi plotado o gráfico (2) em escala milimetrada para visualizar a relação entre as grandezas, que no papel milimetrado deve ser linear com base na equação (17).
+
+\begin{figure}[!h]
+    \centering
+    \caption{Gráfico em escala milimetrada de $\frac{y}{t} \times t$}
+        \begin{tikzpicture}
+        \begin{axis}[    
+        xlabel= t(s),            
+        ylabel= y/t (cm/s) ]
+         
+        \addplot[only marks, mark=*] coordinates {
+            (0.4 , 0.0725 )
+            (0.6 , 0.1067 )
+            (0.8 , 0.1438)
+            (1.0 , 0.1820)
+            (1.2 , 0.2192)
+            (1.4 , 0.2565)
+            (1.6 , 0.2944)
+            (1.8 , 0.3322)
+        };
+        
+        \addplot[domain=0:2.5] {0.186410714*x - 0.0041392854};
+             
+        \end{axis}
+         
+        \end{tikzpicture}
+    \label{fig:Elaborado pelos autores}
+\end{figure}
+
+    
+
+
+    Com a ajuda do método dos mínimos quadrados, através da equação (6) e o $\bar t$, foi calculado o coeficiente angular da reta do gráfico (2), previsto pela equação (17), assim sendo obtido o resultado da equação (32):
+    \begin{equation}
+        \bar t = 1,1 s
+    \end{equation}
+    \begin{equation}
+        \frac{a}{2} = 0,186410714 m/s^2
+    \end{equation}
+    Também foi calculado o $\bar {\frac{y}{t}}$, e assim obteve-se o valor do coeficiente linear pela equação (7), da incerteza de $\frac{y}{t}$ pela equação (8) e da incerteza dos coeficientes pelas equações (9) e (10); que foram referenciados respectivamente pelas equações (33), (34), (35), (36), (37):
+    \begin{equation}
+        \bar {\frac{y}{t}} = 0,2009125 m/s
+    \end{equation}
+    \begin{equation}
+        b = -0,0041392854 m/s
+    \end{equation}
+    \begin{equation}
+        \Delta \frac{y}{t} = 0,001143277451 m/s 
+    \end{equation}
+    \begin{equation}
+        \Delta \frac{a}{2} = 0,000882057703 m/s^2 
+    \end{equation}
+    \begin{equation}
+        \Delta b = 0,0010510930621 m/s 
+    \end{equation}
+    Após feitos os devidos truncamentos e arredondamentos foi obtida a equação (38): 
+    \begin{equation}
+        \frac{a}{2} = 0,1864 \pm 0,0009 m/s^2
+    \end{equation}
+    Depois de achados os coeficientes, utilizando a equação (4) foi encontrado o valor da gravidade, expressado pela equação (39), e também foi calculado o valor de sua incerteza expressado na equação (40):
+    \begin{equation}
+        g = \frac{a }{\sin(\theta)} \Rightarrow g = 9,778922703 m/s^2
+    \end{equation}
+    \begin{equation}
+        \Delta g = 0,060399218 m/s^2
+    \end{equation}
+    Assim, após truncar os valores foi gerada a equação (41):
+    \begin{equation}
+        g = 9,78 \pm 0,06 m/s^2
+    \end{equation}
+    Por último, foi feito um cálculo da equivalência, equações (42) e (43), entre o valor de $g$ encontrado no experimento 2 com o valor do experimento 1, dado pela equação (39), e com o valor de referência da gravidade:
+    \begin{equation}
+        |9,778922703 - 9,99741| < 2\cdot |0,060399218 + 0,094659093| \Rightarrow 0,218487297 < 0,310116622
+    \end{equation}
+    \begin{equation}
+        |9,778922703 - 9,81| < 2\cdot |0,060399218| \Rightarrow 0,031077297 < 0,120798436
+    \end{equation}
+    Portanto, ambas as gravidades são equivalente ao valor encontrado no experimento 2.
+    \subsection{Discussão dos resultados}
+    Para estimar qual dos dois experimentos resulta num melhor valor para a gravidade , foi feito um cálculo de desvio de cada valor encontrado em comparação com o valor esperado dado pelo valor tabelado da gravidade utilizando a fórmula (44) seguinte:
+    \begin{equation}
+        \sigma_{erro} = \frac{|Valor_{calculado} - Valor_{esperado}|}{Valor_{esperado}}
+    \end{equation}
+    Para o primeiro experimento:
+    \[
+        \sigma_{1} = \frac{|9,99741 - 9,81|}{9,81} = 0,019103975
+    \]
+    Para o segundo experimento:
+    \[
+        \sigma_{2} = \frac{|9,78 - 9,81|}{9,81} = 0,003167920183
+    \]
+    Portanto, a gravidade calculada no segundo experimento é mais adequada, pois seu desvio em relação ao valor esperado é inferior ao do primeiro($\sigma_2 < \sigma_1$), além de que sua incerteza também é inferior a da gravidade do experimento 1.
+
+    Além disso, no Experimento 2, foi determinado o valor do coeficiente linear na equação (34), que representa, segundo a equação (17), a velocidade inicial do carrinho no plano inclinado. Teoricamente, essa velocidade inicial deveria ser nula. No entanto, devido a pequenas imprecisões causadas pela limitação dos equipamentos de medição, um valor residual foi observado. Contudo, dada a ordem de grandeza deste resultado, pode-se considerá-lo insignificante. Tal constatação reforça a validade do experimento e dos resultados obtidos em relação à gravidade.
+
+\section{Conclusão}
+
+Diante dos dados coletados, foi possível observar que o experimento 2, o do plano inclinado, demonstrou maior precisão em comparação ao experimento 1. Isso se deve ao fato de que, no experimento 1, os erros sistemáticos eram mais prováveis devido às múltiplas medições e testes realizados. A realização de um maior número de medições, embora possa aumentar a precisão das medidas individuais, também pode ampliar a margem para erros sistemáticos. No entanto, no experimento 2, as condições controladas proporcionaram uma redução significativa na incidência de erros sistemáticos, resultando em dados mais confiáveis e precisos. 
+
+\section{Apêndice}
+\subsection{Cálculos}
+ (Contas efetuadas pelo grupo de pesquisadores independentes)
+\subsection{Conceitos Secundários}
+
+\section{Referências e Bibliografias}
+
+\begin{thebibliography}{9}
+  
+\bibitem{ABNT-NBR7195} 
+ABNT NBR 7195
+
+\bibitem{ACI-318-14} 
+ACI 318-14
+
+\bibitem{ASTM} 
+ASTM
+
+\bibitem{ASTM-C597-09} 
+ASTM C597-09
+
+\bibitem{ASTM-E1876-09} 
+ASTM E1876-09
+
+\bibitem{Eurocode-2004} 
+Eurocode 2004
+
+\bibitem{fib-Model-Code-2010} 
+fib Model Code 2010
+
+\bibitem{Halliday-Fundamentos-Fisica} 
+HALLIDAY, D.; RESNICK, R.; WALKER, J. \emph{Fundamentos de física.} 9.ed. Rio de Janeiro: LTC, 2012. v.l.
+
+\bibitem{Schneider-Laboratorio-Fisica} 
+SCHNEIDER, J.F. \emph{Laboratório de Física I- Livros de Práticas.}
+
+\bibitem{Tipler-Fisica-Engenheiros} 
+TIPLER, P. A, Mosca, G. \emph{Física para cientistas e engenheiros.} 6.ed. Rio de Janeiro: Livros Técnicos Científicos, 2017.v.1.
+
+
+
+\end{thebibliography}
+\end{document}
