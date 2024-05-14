@@ -1,0 +1,642 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{ulem}
+\usepackage{indentfirst}
+\usepackage{circuitikz}
+\usepackage{float}
+\usepackage{gensymb}
+\pgfplotsset{width=10cm, compat=1.18}
+\geometry{
+	paper=a4paper, 
+	inner=3cm,
+	outer=3cm,
+	bindingoffset=.5cm, 
+	top=2cm, 
+	bottom=2cm, 
+}
+\graphicspath{ {./imagens/} }
+\newcommand{\source}[1]{\caption*{Fonte: {#1}} }
+\usepackage{xcolor}
+\colorlet{veccol}{green!45!black}
+\colorlet{myred}{red!90!black}
+\colorlet{myblue}{blue!90!black}
+\colorlet{mypurple}{blue!50!red!80!black!80}
+\tikzstyle{vector}=[->,very thick,veccol]
+\usetikzlibrary{arrows.meta}
+\tikzstyle{thin arrow}=[dashed,thin,-{Latex[length=4,width=3]}]
+\usetikzlibrary{calc}
+\tikzset{>=latex} % for LaTeX arrow head
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        \Large
+        \vspace*{1cm}
+
+        \includegraphics[scale=0.75]{imagens/ifsc_logo.png} \\
+        \Huge
+        \textbf{Universidade de São Paulo} \\
+        \huge
+        Estática
+        
+        \Large
+        Laboratório de física I
+        \vspace{4cm}
+        \Large
+        
+    \end{center}
+    
+    \begin{flushright}
+        \Large
+        \textbf{Alunos}\\
+        \large
+            Luis Eduardo Aires Coimbra - n° 15472565\\
+            Marco Antônio Bicalho de Oliveria - n° 15474741\\
+            Mateus Alves Martins Claudino - n° 15478791
+    \end{flushright}
+    
+    \vspace*{\fill}
+    \centering \large São Carlos \\ 2024
+    
+\end{titlepage}
+ \tableofcontents
+ \newpage
+
+\section{Introdução}
+A Estática é a área da Física que estuda o equilíbrio de corpos rígidos. Equilíbrio significa ausência de aceleração e, portanto, velocidades de translação e rotação constantes. Nos problemas de equilíbrio estático é considerado também que as velocidades são nulas. As condições de equilíbrio de um sistema estão determinadas pelas Leis de Newton da Mecânica (1) e (2) [1]: 
+\begin{equation}
+\sum\limits_{i}^{\mbox{}}\vec{F_i} = 0
+\end{equation}
+\begin{equation}
+\sum\limits_{i}^{\mbox{}}\vec{F_i}\times\vec{r_i} = 0
+\end{equation}
+
+
+Nessas equações, $\vec{F_i}$ são as forças externas atuando sobre o sistema e
+$\vec{r_i}$, os pontos de aplicação de cada uma, quando o sistema é extenso, como,
+por exemplo, um corpo rígido.
+A condição (1) garante que o centro de massa
+do sistema tem aceleração nula; se inicialmente está em repouso, então se
+manterá nesse estado e não haverá translação. A condição (2) é necessária
+para garantir que o sistema não vai se acelerar angularmente e, portanto, não
+vai rotar. A condição (2) é imprescindível para determinar o equilíbrio de corpos
+rígidos, por exemplo, em projetos de construções civis, motores ou aeronaves.
+Em problemas de estática mais simples, para garantir o equilíbrio translacional
+do centro de massa do corpo, muitas vezes é suficiente que somente a
+condição (1) seja satisfeita [1].
+\subsection{Diagrama de forças}
+
+Ao analisar a condição de equilíbrio de um sistema físico, é comum representar as forças externas atuando sobre o sistema concentradas em um único ponto, que pode ser a posição de uma massa pontual ou o centro de massa de um corpo extenso. Essa representação gráfica das forças é conhecida como diagrama de forças de corpo isolado. Nesse diagrama, a força resultante da soma vetorial das forças é nula, refletindo o estado de equilíbrio do sistema.
+
+Um exemplo ilustrativo é mostrado na figura (1), onde um corpo extenso está em equilíbrio sobre um plano inclinado. Nessa situação, três forças estão atuando sobre o corpo: o peso, representado no centro de massa do corpo; a força de reação do plano, aplicada perpendicularmente sobre a face do corpo; e a força de atrito, aplicada paralelamente à face do corpo. Na figura, são apresentados os dois tipos de diagramas de forças mencionados.
+
+No diagrama de corpo isolado, as forças são representadas como vetores que emanam do centro de massa do corpo rígido. Essa representação simplifica a análise ao concentrar todas as forças em um único ponto. A condição de equilíbrio é então expressa pela nulidade da força resultante, o que implica que a soma vetorial de todas as forças é zero.
+
+
+\begin{center}
+    
+
+\begin{tikzpicture}[>=stealth]
+    % Definindo os vetores
+    \draw[->, thick, red] (0,0) -- (0,-4.1) node[midway, below] {$\mathbf{F_1}$};
+    \draw[->, thick, blue] (0,-4.1) -- (2.66,-2.44) node[midway, right] {$\mathbf{F_2}$};
+    \draw[->, thick, green] (2.66,-2.44) -- (0,0) node[midway, above] {$\mathbf{F_3}$};
+    
+    % Adicionando ângulos
+    \draw (0,0) arc (0:26.57:0.5) node[midway, right] {$\theta_1$};
+    \draw (0,-4.1) arc (26.57:63.43:0.5) node[midway, above] {$\theta_2$};
+    \draw (2.66,-2.44) arc (153.43:180:0.5) node[midway, left] {$\theta_3$};
+\end{tikzpicture}
+
+\begin{tikzpicture}[>=stealth]
+    % Definindo os vetores
+    \draw[->, thick, red] (0,0) -- (0,-4.1) node[midway, below] {$\mathbf{F_1}$};
+    \draw[->, thick, blue] (0,0) -- (2.66,1.66) node[midway, right] {$\mathbf{F_2}$};
+    \draw[->, thick, green] (0,0) -- (-2.7,2.43) node[midway, above] {$\mathbf{F_3}$};
+    
+    % Adicionando ângulos
+    \draw (0,0) arc (0:26.57:0.5) node[midway, right] {$\theta_1$};
+    \draw (0,0) arc (26.57:63.43:0.5) node[midway, above] {$\theta_2$};
+    \draw (0,0) arc (153.43:180:0.5) node[midway, left] {$\theta_3$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    % Desenho do plano inclinado
+    \draw (0,0) -- (4,0);
+    \draw (0,0) -- (60:4);
+    \draw[dashed] (0,0) -- (0,2);
+    \draw[dashed] (4,0) -- (4,2);
+    \draw[dashed] (0,2) -- (4,2);
+    \draw[dashed] (60:4) -- (60:2);
+    \draw[dashed] (0,0) -- (0,-0.5);
+    
+    % Desenho do bloco
+    \draw[fill=gray] (2,1) rectangle (3,1.5) node[midway] {$m$};
+    
+    % Ângulo
+    \draw (0.75,0) arc (0:30:0.75) node[midway, right] {$\theta$};
+    
+    % Diagrama de forças
+    \begin{scope}[shift={(5,1)}]
+        % Vetores de força
+        \draw[->, thick, blue] (0,0.75) -- (0,2) node[right] {$\mathbf{F_{\text{grav}}}$};
+        \draw[->, thick, red] (-0.5,0.25) -- (-1.5,0.25) node[left] {$\mathbf{F_{\text{atr}}}$};
+        \draw[->, thick, green] (0.5,0.25) -- (1.5,0.25) node[right] {$\mathbf{N}$};
+        \draw[->, thick, purple] (0,-0.25) -- (0,-1.5) node[right] {$\mathbf{P}$};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+Diante dessa análise vetorial é possivél fazer o uso da estrutura matemática da Lei dos Senos a fim de simplificar a análise vetorial de decomposição, conforme a seguinte equação(3):
+
+
+\begin{equation}
+    \frac{F_{at}}{\sin{\theta_{1}}} = \frac{P}{\sin{\theta_{2}}} = \frac{N}{\sin{\theta_{3}}}
+\end{equation}
+    
+
+
+\subsection{Forças de Atrito}
+Quando dois corpos são colocados em contato, forças em escala
+molecular são mutuamente exercidas entre as superfícies. As forças de reação
+de contato que aparecem quando um objeto exerce pressão sobre outro são o
+exemplo mais direto desse fenômeno. Essas forças têm origem na repulsão
+entre os elétrons nas duas superfícies. Existem também forças atrativas na
+escala molecular, como as forças de van der Waals, que tendem a dificultar o
+deslizamento das superfícies e constituem a origem das forças de atrito [1].
+
+
+Matematicamente, essas forças podem ser representadas por um vetor $\vec{F_a}$ sempre contrário à tendência de movimento do objeto, de modo que, no repouso, elas aumentam de maneira proporcional à força $\vec{F}$ aplicada ao corpo até um limite determinado por $\vec{F_a}_{\text{max}}$.Ao equacionar obtém-se (4) :
+\begin{equation}
+F \leq {F_a}_{\text{max}} \hspace{0.2cm} com  \hspace{0.2cm} {F_a}_{\text{max}} = \mu_eN
+\end{equation}
+em que $\mu_e$ é o coeficiente de atrito estático, que depende das duas superfícies
+em contato, e N a normal entre o corpo e superfície.A resposta do atrito, diante da intensidade da força de força $\vec{F}$,
+está representada graficamente na figura (2)[1]:
+\includegraphics[width = 1\linewidth]{imagens/image.png}
+
+(COLOCAR F NO LUGAR DE T!!)
+
+Acima do limite máximo, quando $F > {F_a}_{\text{max}}$, as forças atrativas
+intermoleculares são vencidas e as superfícies começam a deslizar. Nessas
+condições, o atrito decai bruscamente e assume um valor aproximadamente
+constante (5) [1] :
+\begin{equation}
+ F_a = \mu_cN   
+\end{equation}
+esse é o regime de atrito cinético, sendo que $\mu_c$ é o
+coeficiente de atrito cinético ou dinâmico entre as superfícies. 
+
+\section{Objetivos}
+Analisar e estudar os casos de equilíbrio estático em três experimentos distintos, calcular as forças de tração nas cordas nos dois primeiros experimentos e o coeficiente de atrito estático entre o objeto e o plano inclinado no segundo experimento. Com isso, aprender sobre diferentes casos de equilíbrio, forças de diferentes naturezas e entender a aplicação do diagrama de forças.
+
+
+\section{Materiais}
+\begin{enumerate}
+   \item Aste metálica
+    \item Balança analítica. Modelo: AUW220D (Shimadzu)
+    \item Balde 
+    \item Ganchos metálicos
+    \item Linha de costura simples
+    \item Massas Cilíndricas
+    \item Massas em formas de disco
+    \item Paralelepípedo reto retângulo com uma face lisa e a oposta rugosa
+    \item Plano Inclinado variável
+    \item Polias fixas
+    \item Régua com suporte variável
+    \item Régua de plástico comum
+    \item Suporte magnético para transferidor.
+    \item Tábua de apoio para as polias magnético
+    \item Tesoura
+    \item Transferidor, Modelo: Deselec n° 8112
+\end{enumerate}
+
+\section{Metodologia}
+\subsection{Experimento 1}
+    Neste experimento, o grupo utilizou um sistema composto por duas polias e três cordas amarradas em um ponto para determinar a força de tração no caso de equilíbrio estático entre três massas penduradas em cada corda.
+
+    Primeiramente, nas pontas de duas das cordas, foram apoiadas as massas $ m_{1}$ e $m_{3}$, e as cordas foram passadas sobre as polias para poderem se movimentar. Após a fixação dessas duas massas, uma terceira massa, $m_{2}$, foi pendurada na corda central para estabelecer a situação de equilíbrio desejada no ponto de amarração, conforme mostrado na figura (3).
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width=0.4\linewidth]{imagens/sistema_de_polias.png}
+        \caption{Enter Caption}
+        \label{fig:enter-label}
+    \end{figure}
+    
+    Em seguida, aguardou-se algum tempo para que o sistema ficasse em equilíbrio, e um transferidor foi utilizado tendo o ponto de amarração como origem, e foi mensurado assim os ângulos $\alpha$ e $\gamma$, como esquematizado na figura (3). Com isso, foi desenhado o diagrama de forças e o diagrama de corpo livre para o sistema em um papel milimetrado.
+    
+    Utilizando como base a lei dos senos, obteve-se a relação entre as forças de tração em cada corda na situação de equilíbrio, figura (5), dada pelas equações (6) e (7).
+    \begin{equation}
+        T_{AB} = \frac{\sin(\alpha)m_{2}g}{\sin({180 \degree - \alpha - \gamma})}
+    \end{equation}
+    \begin{equation}
+        T_{AC} = \frac{\sin(\gamma)m_{2}g}{\sin(180 \degree - \alpha - \gamma)}
+    \end{equation}
+
+    Para as massas $m_{1}$ e $m_{3}$, foi utilizado o diagrama de corpo livre para cada uma, e foram obtidas as equações (8) e (9) na situação de equilíbrio:
+    \begin{equation}
+        m_{1} = \frac{T_{AC}}{g} 
+    \end{equation}
+    \begin{equation}
+        m_{2} = \frac{T_{AB}}{g}
+    \end{equation}
+
+    Com isso, foi discutida a relação entre os valores encontrados e uma possível situação de forças de atrito entre as polias e as cordas. 
+    
+\subsection{Experimento 2}
+    No segundo experimento, foi utilizada uma corda presa a uma haste e a um apoio móvel, que estava sobre uma régua na vertical, juntamente com uma massa presa a haste em questão para que fosse analisada a situação de ruptura do fio, como esquematizado na figura (4), em que C é o apoio móvel, B a base da régua e A a extremidade da haste:
+        \begin{figure}[!h]
+            \centering
+            \includegraphics[width=0.2\linewidth]{imagens/experimento2.png}
+            \caption{Esquema do experimento dois}
+            \label{fig:enter-label}
+        \end{figure}
+    
+    Inicialmente, foram presas cordas entre a extremidade da haste e o gancho de massas e também entre a extremidade da haste e um apoio móvel próximo a uma régua. Após isso, subiu-se o apoio móvel até o topo da régua para segurar a haste.
+
+    Após isso, foi mensurada com a ajuda de outra régua o valor do comprimento $L$ do barbante preso ao apoio móvel. Em seguida, foi adicionada uma massa $m_{4}$ ao gancho para que a corda fosse tensionada, e foi medido novamente o valor $L$ do fio, pois com o aumento da tensão esse valor fica ligeiramente maior.
+
+    Posteriormente, o apoio foi descido cuidadosamente até o instante de ruptura e obtido o valor apontado pela régua para a altura do apoio móvel $\overline{\rm CB}$, processo esse repetido cinco vezes e montado na tabela (1).
+
+    Com isso, foi obtido o valor da tração no fio dado pelo resultado (10):
+
+    
+    
+    \begin{equation}
+        T = \frac{mgL}{\overline{\rm CB}}
+    \end{equation}
+    Também foi calculado a incerteza da tração, através do desvio médio, sendo obtida a equação (11):
+    \begin{equation}
+        \Delta T = \frac{\sum |T_{i} - \bar T|}{N}
+    \end{equation}
+
+    Num segundo momento, foi utilizada a mesma haste e o mesmo barbante porém agora preso na vertical ao gancho e à haste, e foi adicionado aos poucos pequenas massas de valores diferentes, até que o peso das massas fosse suficiente para romper o fio.
+
+    No momento de ruptura, as massas utilizadas foram medidas numa balança, esse procedimento foi repetido cinco vezes e reportado na tabela (2). Cada uma das outras medidas foi feita adicionando-se massas cada vez menores, e com isso, o ponto de ruptura foi mais aproximado e foi calculado o valor médio do peso necessário para romper o fio.
+
+    Após isso, o valor da tração de rompimento do fio foi obtido pela equação (12) com base na equação (1):
+    \begin{equation}
+        T = mg
+    \end{equation}
+    Em seguida, ao final, foi calculada a incerteza da tração na situação em questão, da mesma forma expressa na equação (11).
+\subsection{Experimento 3}
+Primeiramente, a partir do diagrama de corpo livre de um bloco em repouso em um plano inclinado com atrito e a equação (4), obteve-se o resultado (13):
+\begin{equation}
+\mu_e = \tan{\theta}
+\end{equation}
+em que $\mu_e$ é o coeficiente de atrito estático, e $\theta$ o ângulo entre  a horizontal e o plano inclinado estudado.
+
+
+Posteriormente, com um bloco de madeira com duas faces de superfícies distintas,uma lisa e uma rugosa,escolheu-se uma dessas faces e colocou-se esse bloco em um plano inclinado com ângulo $\theta$ varíavel, partindo de $\theta$ = $0$ até o ângulo no qual o bloco passou a deslizar sobre o plano inclinado. O resultado desse ângulo, em graus, foi então anotado com a ajuda de um transferidor,repetindo-se esse experimento um total de vinte vezes.
+
+
+Após isso, calculou-se o $\mu_e$ para cada um desses ângulos e calculou-se a média $\bar\mu$ desses resultados com sua devida incerteza, como essa sendo igual ao desvio médio calculado por (14):
+\begin{equation}
+        \Delta\mu_e = \frac{\sum |\mu_{i} - \bar \mu_e|}{N}
+    \end{equation}
+em que N é igual ao número de medidas realizadas
+
+Com isso, escolheu-se a outra face do bloco e o experimento pode ser realizado novamente, obtendo-se um novo $\mu_e$ com outra incerteza.
+
+Finalmente,comparou-se os coeficientes de atrito obtidos com a tabela (), para chegar a uma conclusão sobre as superfícies em contato.
+\section{Resultados}
+\subsection{Experimento 1}
+    Após pesagem das massas utilizadas no experimento 1, foram obtidos os resultados (15), (16), (17):
+    \begin{equation}
+        m_{1} = 72,70 \pm 0,01g
+    \end{equation}
+    \begin{equation}
+        m_{2} = 82,60 \pm 0,01g
+    \end{equation}
+    \begin{equation}
+        m_{3} = 62,90 \pm 0,01g
+    \end{equation}
+
+    Com as massas posicionadas foram esperados poucos segundos até a situação de equilíbrio se estabelecer, e com um transferidor foram obtidos os valores para os ângulos $\alpha$ e $\gamma$ dados pelos resultados (18) e (19):
+    \begin{equation}
+        \alpha = 48 \degree \pm 1 \degree
+    \end{equation}
+    \begin{equation}
+        \gamma = 58 \degree \pm 1 \degree
+    \end{equation}
+
+    Com os ângulos e as massas, foi construído o diagrama de forças no ponto de encontro das três cordas e também o triângulo de forças para tal ponto, resultando na figura ():
+
+    "diagrama e triangulo no papel milimetrado"
+    \begin{figure}[!h]
+        \centering
+        \begin{tikzpicture}[scale=1.5]
+            % Definição dos vetores
+            \draw[myred, ->] (0,0) -- (1.4,0.7) node[right] {$\mathbf{F_1}$};
+            \draw[myblue, ->] (0,0) -- (270:1) node[left] {$\mathbf{F_2}$};
+            \draw[mypurple, ->] (0,0) -- (150:1.5) node[left] {$\mathbf{F_3}$};
+            \draw[dashed] (0,0) -- (0, 1);
+            
+            % Ângulos
+            \draw (-0.38,0.22) arc (150:90:0.4) node[midway,left] {$\alpha$};
+            \draw (0.3,0.12) arc (1:90:0.3) node[midway,right] {$\gamma$};
+        \end{tikzpicture}
+        \caption{Diagrama de forças do ponto de amarração}
+        \label{fig:diagrama_forcas}
+    \end{figure}
+
+    Foi utilizada as equações (6) e (7) para calcular as trações e o valor dado pelo resultado (16). Assim, foram obtidas as relações (20) e (21):
+    \begin{equation}
+        T_{AB} = 626,4420121 mN
+    \end{equation}
+    \begin{equation}
+        T_{AC} = 714,8713649 mN
+    \end{equation}
+    Em seguida, foi calculada a incerteza da tração AB obtendo-se a equação (22) e a da tração AC obtendo-se a equação (23):
+    \begin{equation}
+        \Delta T_{AB} = 16,19064047 mN
+    \end{equation}
+    \begin{equation}
+        \Delta T_{AC} = 15,03832292 mN
+    \end{equation}
+    Dessa forma, foram obtidos os resultados (24) e (25) para as trações:
+    \begin{equation}
+        T_{AB} = 630 \pm 20 mN 
+    \end{equation}
+    \begin{equation}
+        T_{AC} = 710 \pm 20 mN
+    \end{equation}
+
+    Usando como base as equações (8) e (9), foram calculados os resultados (26) e (27) para os valores indiretos das massas $m_{1}$ e $m_{3}$:
+    \begin{equation}
+        m_{1} = 72,87169877 g
+    \end{equation}
+    \begin{equation}
+        m_{3} = 63,85 g
+    \end{equation}
+
+    Após isso, foram calculadas suas respectivas incertezas, obtendo-se os resultados (28) e (29):
+    \begin{equation}
+        \Delta m_{1} = 1,532958504 g
+    \end{equation}
+    \begin{equation}
+        \Delta m_{3} = 1,650422066 g
+    \end{equation}
+
+    Logo, sendo reportadas as equações (30) e (31) para as massas na medida indireta:
+    \begin{equation}
+        m_{1} = 72,9 \pm 2 g
+    \end{equation}
+    \begin{equation}
+        m_{3} = 63,9 \pm 2 g
+    \end{equation}
+
+    Finalmente, foi feita a equivalência para os valores obtidos direta e indiretamente para as massas, gerando os resultados (32) e (33):
+    \begin{equation}
+        |72,87169877 - 72,7| < 2|0,01 + 1,532958504| \Rightarrow 0,17169877 < 3,085917008
+    \end{equation}
+    \begin{equation}
+        |63,85 - 62,9| < 2|0,01 + 1,650422066| \Rightarrow 0,95 < 3,320844133
+    \end{equation}
+
+    Resultando então em massas equivalentes.
+\subsection{Experimento 2}
+
+Nesse experimento, o grupo mediu os comprimentos $L_{i}$ e $\overline{\rm CB}_{i}$ para tensionar o fio até a ruptura por meio da carga $m$ no arranjo experimental da figura ().
+
+Os dados coletados estão descritos na equação (34) e na tabela (1):
+
+\begin{equation}
+    m= (543 \pm 0,01)g
+\end{equation}
+
+\begin{table}[!h]
+ \centering
+        \caption{Relação das medidas $L_{i}$ e $BC_{i}$}
+         \begin{tabular}{| c | c | c |}
+           \hline
+             $i$  & $\overline{\rm CB}_{i}[cm](\pm0,1cm)$ & $L_{i}[cm](\pm0,1cm)$  \\
+            \hline
+               1   & 11,1  &  18,0  \\
+           \hline    
+            2   &   12,3 &  18,5 \\
+           \hline    
+            3   &   11,5  &  18,8 \\
+           \hline    
+               4   & 12,5 &   18,8 \\
+           \hline    
+               5  &  13,0  & 18,6\\
+        
+             
+             \hline 
+        \end{tabular} 
+        \label{tab:2}
+
+\end{table}
+
+Depois, a equação (10) foi utilizada para calcular a tração da primeira medição descrita na equação (35):
+
+\begin{equation}
+    T= 8,63810270 N
+\end{equation}
+
+Dessa maneira, prosseguiu-se o procedimento para calcular uma tração média das cinco medições e seu erro descrito usando a equação (11). Tais dados geraram as equações (36) e (37): 
+\begin{equation}
+   \bar T_1 = 8,19824546 N
+\end{equation}
+
+\begin{equation}
+    \Delta T_1 = 0,380228328 N
+\end{equation}
+
+Logo, a tensão obtida pode ser expressa pelo resultado (38) :
+
+\begin{equation}
+    T_1 = (8,2 \pm 0,4) N
+\end{equation}
+
+Logo após isso, o grupo mediu a tração de ruptura pelo segundo método, medindo a massa necessária para romper o fio usando várias massas $M_{i}$ com auxílio das massas em forma de disco medidos com a balança de precisão descritos na tabela (2):
+
+\begin{table}[!h]
+ \centering
+        \caption{Relação das massas medidas $M_{i}$}
+         \begin{tabular}{| c | c |}
+           \hline
+             $i$  & $M_{i}[g](\pm0,1g)$  \\
+            \hline
+               1   &  907,0  \\
+           \hline    
+            2   &   895,9  \\
+           \hline    
+            3   &   859,7  \\
+           \hline    
+               4   &  825,6 \\
+           \hline    
+               5  & 792,6  \\
+        
+             
+             \hline 
+        \end{tabular} 
+        \label{tab:2}
+
+\end{table}
+
+Assim, ao calcular-se a tração obteve-se (39):
+\begin{equation}
+    \bar T_2 = 8,3989296 
+\end{equation}
+E sua incerteza, determinada pelo desvio médio (40) :
+\begin{equation}
+    \Delta T_2 = 0,593207717
+\end{equation}
+De tal forma que pôde-se representar esse resultado por (41):
+\begin{equation}
+    T_2 = (8,4 \pm 0,6) N
+\end{equation}
+Finalmente, foi feita a equivalência entre essas duas medidas para encontrar (42):
+\begin{equation}
+|8,19824546 - 8,3989296| < 2(0,380228328 + 0,593207717)  \Rightarrow
+0,20068414 < 1,94687208
+\end{equation}
+De fato são equivalentes
+\subsection{Experimento 3}
+Para a face lisa,construiu-se a seguinte tabela (3) para os ângulos obtidos, em roll: 
+
+
+\begin{table}[!h]
+ \centering
+        \caption{Relação entre o ângulo $\theta$ obtido e o número $i$ da medição}
+         \begin{tabular}{| c | c | c | c |}
+           \hline
+             $i$  & $\theta$($\pm 1^{o}$) & $i$  & $\theta$($\pm 1^{o}$)\\
+            \hline
+               1   &   10° &  11 & 12°   \\
+           \hline    
+            2   &   10°     & 12 &  12° \\
+           \hline    
+            3   &   10°  &   13 & 12°\\
+           \hline    
+               4   &  10° &   14 & 12° \\
+           \hline    
+               5  &   11°  &  15 & 13°\\
+           \hline    
+               6   &   11°  & 16 & 13°\\
+           \hline    
+               7    &  11°   &17 & 13°\\
+           \hline
+               8    &  11° & 18 & 13°\\
+           \hline
+               9  & 11° & 19 & 15° \\
+            \hline 
+             10 & 12°  &  20 & 15°\\
+             
+             \hline 
+        \end{tabular} 
+        \label{tab:2}
+
+\end{table}
+Após isso foi utilizada a relação (13), para obter todos os coeficientes de atrito estático e fez-se uma média, obtendo-se (43) :
+\begin{equation}
+\bar\mu_{e1} = 0,2118222
+\end{equation}
+E foi feito o desvio médio, que representa sua incerteza através do uso da equação (51), de forma a encontrar (44) :
+\begin{equation}
+\Delta\mu_{e1} = 0,021966735
+\end{equation}
+Assim, para face lisa,pode-se representar a medida por (45):
+\begin{equation}
+    \mu_{e1} = (0,21 \pm 0,02) 
+\end{equation}
+Por sua vez para fase rugosa, construiu-se a seguinte tabela (4), organizada em roll:
+\begin{table}[!h]
+ \centering
+        \caption{Relação entre o ângulo $\theta$ obtido e o número $i$ da medição}
+         \begin{tabular}{| c | c | c | c |}
+           \hline
+             $i$  & $\theta$($\pm 1^{o}$) & $i$  & $\theta $($\pm 1^{o}$)\\
+            \hline
+               1   &  15° &  11 & 17°   \\
+           \hline    
+            2   &   16°     & 12 &  17° \\
+           \hline    
+            3   &   16°  &   13 & 17°\\
+           \hline    
+               4   &   16° &   14 & 18° \\
+           \hline    
+               5  &   16°  &  15 & 18°\\
+           \hline    
+               6   &   17°  & 16 & 18°\\
+           \hline    
+               7    &  17°   &17 & 18°\\
+           \hline
+               8    &  17° & 18 & 19°\\
+           \hline
+               9  & 17° & 19 & 19° \\
+            \hline 
+             10 & 17°  &  20& 19°\\
+             
+             \hline 
+        \end{tabular} 
+        \label{tab:2}
+
+\end{table}
+\newpage
+Após isso foi utilizada a relação (13), para obter todos os coeficientes de atrito estático e fez-se uma média, obtendo-se (46) :
+\begin{equation}
+\bar\mu_{e2} = 0,309671891
+\end{equation}
+E foi feito o desvio médio, que represneta sua incerteza através do uso da equação (51), de forma a encontrar (47) :
+\begin{equation}
+\Delta\mu_{e2} = 0,016495839
+\end{equation}
+Assim, para face rugosa,pode-se representar a medida por (48):
+\begin{equation}
+    \mu_{e2} =  (0,31 \pm 0,02) 
+\end{equation}
+
+
+\subsection{Discussão dos resultados}
+No experimento 1 percebe-se que a equivalência funcionou para as massas, o que indica um valor condizente para as forças de tração calculadas no equilíbrio. Ademais, caso fossem consideradas forças de atrito entre as polias e as cordas ocorreria uma mudança nos resultados obtidos para as massas, em que dependendo do sentido estabelecido seriam obtidos valores distintos. Caso o atrito fosse uma força contrária ao peso, seria obtida uma massa maior do que o valor real, e caso fosse favorável ao peso seria obtida uma massa menor do que a esperada para o caso sem influência do atrito.
+
+No caso do experimento 2, foi percebido que os valores para a tração da corda foram equivalente e bem próximos, o que leva a uma análise de que independente do método utilizado a tração deve dar o mesmo valor, se tratando de uma força que depende do fio.
+
+
+Para o experimento 3 a conclusão feita, por meio da análise dos resultados, é que a face rugosa, por possuir uma superfície com maior pontos de contato com o plano inclinado, têm um maior coeficiente de atrito e portanto menor tendência a deslizar. 
+
+\section{Conclusão}
+Diante dos dados coletados, foi possível observar que os resultados obtidos nos experimento 1 mostraram-se equivalentes à medição direta das massas,fato que indica o experimento foi realizado com boa precisão. Também, no experimento 2, as duas maneiras de se medir a tração máxima suportada pelo fio também se mostraram equivalentes, o que implica que os dois métodos utilizados são igualmente precisos para esse propósito. No último experimento, mesmo diante de uma alta gama de valores de ângulos encontrados, a  incerteza da medição se mostrou baixa,indicando alta precisão, além disso, o resultado obtido foi conforme o esperado com a face rugosa tendo um maior coeficiente de atrito estático e com isso maior resistência ao deslizamento.
+\section{Referências e Bibliografias}
+
+\begin{thebibliography}{2}
+
+\bibitem{Schneider-Laboratorio-Fisica} 
+SCHNEIDER, J.F. \emph{Laboratório de Física I- Livros de Práticas.}
+
+
+\bibitem{Tipler-Fisica-Engenheiros} 
+TIPLER, P. A, Mosca, G. \emph{Física para cientistas e engenheiros.} 6.ed. Rio de Janeiro: Livros Técnicos Científicos, 2017.v.1.
+\bibitem{Halliday-Fundamentos-Fisica} 
+HALLIDAY, D.; RESNICK, R.; WALKER, J. \emph{Fundamentos de física.} 9.ed. Rio de Janeiro: LTC, 2012. v.l.
+\end{thebibliography}
+\section{Apêndice}
+\subsection{Cálculos}
+(Contas efetuadas pelo grupo de pesquisadores independentes)
+\subsection{Conceitos secundários}
+Foi utilizado para o valor tabelado da gravidade o encontrado em "Propriedades físicas" [3].
+\begin{equation}
+g = 9,81 m/s^2
+\end{equation}
+Tabém foram utilizadas as definições de média de medidas e desvio médio, encontradas em [1],resultando em (50) e (51):
+\begin{equation}
+    \bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
+\end{equation}
+\begin{equation}
+    \text{Desvio Médio} = \frac{1}{n}\sum_{i=1}^{n} |x_i - \bar{x}|
+\end{equation}
+Por fim, também foi utilizado a definição de equivalência dada no livro de práticas [3] (52):
+\begin{equation}
+    |x_1 - x_2| < 2(\sigma_1 + \sigma_2)
+\end{equation}
+\end{document}
